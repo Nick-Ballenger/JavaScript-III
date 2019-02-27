@@ -64,18 +64,30 @@ CharacterStats.prototype.takeDamage = function(){
 
 
 function Humanoid(attributes){
-  GameObject.call(this,attributes);
+  
   CharacterStats.call(this,attributes);
   this.team = attributes.team;
   this.weapons = attributes.weapons;
   this.language = attributes.language;
-}
-Humanoid.prototype = Object.create(GameObject.prototype);
+};
+
 Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 Humanoid.prototype.greet = function(){
   return `${this.name} offers a greeting in ${this.language}`
-}
+};
+
+function Hero(heroAtts){
+  GameObject.call(this,heroAtts);
+  CharacterStats.call(this,heroAtts);
+  Humanoid.call(this,heroAtts);
+};
+
+function Villain(villainAtts){
+  GameObject.call(this,villainAtts);
+  CharacterStats.call(this,villainAtts);
+  Humanoid.call(this,villainAtts);
+};
 
   const mage = new Humanoid({
     createdAt: new Date(),
@@ -126,6 +138,41 @@ Humanoid.prototype.greet = function(){
     ],
     language: 'Elvish',
   });
+
+  const savior = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 9001,
+    name: 'Tai Lopez',
+    team: 'Youtube Adspace',
+    weapons: [
+      'knowledge'
+    ],
+    language: 'Pyramid Scheme',
+  });
+
+  const nemesis = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 9009,
+    name: 'Ethan',
+    team: 'Youtube Creator',
+    weapons: [
+      'Satire'
+    ],
+    language: 'Common',
+  });
+  GameObject.prototype.speak = function() {
+    return ``;
+  }
 
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
