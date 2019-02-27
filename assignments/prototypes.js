@@ -41,6 +41,22 @@
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
+function GameObject (attrs){
+  this.createdAt = attrs.createdAt;
+  this.name = attrs.name;
+  this.dimensions =attrs.dimensions;
+
+}
+function CharacterStats (deets){
+  this.healthPoints = deets.healthPoints;
+  
+}
+
+function Humanoid(attributes){
+  this.team = attributes.team;
+  this.weapons = attributes.weapons;
+  this.language = attributes.language;
+}
 /*
   const mage = new Humanoid({
     createdAt: new Date(),
